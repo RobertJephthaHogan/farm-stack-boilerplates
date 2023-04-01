@@ -4,7 +4,7 @@ import jwt
 from app.config import Settings
 
 
-secret_key = Settings().secret_key
+SECRET_KEY = Settings().SECRET_KEY
 
 
 class JWTHandler:
@@ -20,11 +20,11 @@ class JWTHandler:
             'user_id': user_id,
             'expires': time.time() + 24000
         }
-        return self.token_response(jwt.encode(payload, secret_key, algorithm="HS256"))
+        return self.token_response(jwt.encode(payload, SECRET_KEY, algorithm="HS256"))
 
 
     def decode_jwt(token: str) -> dict:
-        decoded_token = jwt.decode(token.encode(), secret_key, algorithms=["HS256"])
+        decoded_token = jwt.decode(token.encode(), SECRET_KEY, algorithms=["HS256"])
         return decoded_token if decoded_token['expires'] >= time.time() else {}
 
 
