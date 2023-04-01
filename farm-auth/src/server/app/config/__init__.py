@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     DATABASE_URL: Optional[str] = os.getenv("MONGO_DETAILS")
 
     # JWT
-    secret_key: str
+    SECRET_KEY: str
     algorithm: str = "HS256"
 
     # On Start-up Configuration 
