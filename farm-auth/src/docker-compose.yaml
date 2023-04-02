@@ -1,0 +1,15 @@
+version: '3'
+services:
+  farm_auth_server:
+    build:
+      context: ./server
+    ports:
+      - "8000:8000"
+    container_name: farm_auth_server
+
+  farm_auth_client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    container_name: farm_auth_client
